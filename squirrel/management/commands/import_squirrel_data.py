@@ -1,7 +1,9 @@
 import csv
 
 from django.core.management.base import BaseCommand
-from sightings.models import SquirrelDetail
+from squirrel.models import SquirrelDetail
+
+
 
 class Command(BaseCommand):
     help = 'Get squirrel data'
@@ -21,6 +23,8 @@ class Command(BaseCommand):
                 obj.Y = item['Y']
                 obj.Unique_Squirrel_ID = item['Unique Squirrel ID']
                 obj.Hectare = item['Hectare']
+
+                
                 obj.Date = item['Date']
                 obj.Hectare_Squirrel_Number = item['Hectare Squirrel Number']
                 obj.Age = item['Age']
@@ -31,20 +35,21 @@ class Command(BaseCommand):
                 obj.Location = item['Location']
                 obj.Above_Ground_Sighter_Measurement = item['Above Ground Sighter Measurement']
                 obj.Specific_Location = item['Specific Location']
-                obj.Running = item['Running']
-                obj.Chasing = item['Chasing']
-                obj.Climbing = item['Climbing']
-                obj.Eating = item['Eating']
-                obj.Foraging = item['Foraging']
+                
+                obj.Running = bool(item['Running'])
+                obj.Chasing = bool(item['Chasing'])
+                obj.Climbing = bool(item['Climbing'])
+                obj.Eating = bool(item['Eating'])
+                obj.Foraging = bool(item['Foraging'])
                 obj.Other_Activities = item['Other Activities']
-                obj.Kuks = item['Kuks']
-                obj.Quaas = item['Quaas']
-                obj.Moans = item['Moans']
-                obj.Tail_flags = item['Tail flags']
-                obj.Tail_twitches = item['Tail twitches']
-                obj.Approaches = item['Approaches']
-                obj.Indifferent = item['Indifferent']
-                obj.Runs_from = item['Runs from']
+                obj.Kuks = bool(item['Kuks'])
+                obj.Quaas = bool(item['Quaas'])
+                obj.Moans = bool(item['Moans'])
+                obj.Tail_flags = bool(item['Tail flags'])
+                obj.Tail_twitches = bool(item['Tail twitches'])
+                obj.Approaches = bool(item['Approaches'])
+                obj.Indifferent = bool(item['Indifferent'])
+                obj.Runs_from = bool(item['Runs from'])
                 obj.Other_Interactions = item['Other Interactions']
                 obj.Lat_Long = item['Lat/Long']
   
