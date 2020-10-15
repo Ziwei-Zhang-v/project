@@ -15,7 +15,7 @@ class SquirrelDetail(models.Model):
     )
 
     unique_squirrel_id = models.CharField(
-        max_length = 20,
+        max_length = 14,
         help_text='Unique squirrel id of squirrel',
     )
 
@@ -87,4 +87,6 @@ class SquirrelDetail(models.Model):
     
     runs_from = models.BooleanField()
 
+    def __str__(self):
+        return self.unique_squirrel_id
 
