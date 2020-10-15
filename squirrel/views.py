@@ -4,12 +4,16 @@ from .models import SquirrelDetail
 
 
 def index(request):
-    return render(request, 'squirrel/index.html', {})
+    sightings = SquirrelDetail.objects.all()
+    context = {
+        'sightings': sightings,
+    }
+    return render(request, 'squirrel/index.html', context)
 
 def sightings(request):
-    squirrel_details = SquirrelDetail.objects.all()
+    sightings = SquirrelDetail.objects.all()
     context = {
-        'squirrel_details': squirrel_details,
+        'sightings': sightings,
     }
     return render(request, 'squirrel/sightings.html', context)
 

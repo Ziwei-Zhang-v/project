@@ -2,8 +2,8 @@
 <html>  
 	<body>
 	<ul>
-	{% for squirrel_detail in squirrel_details %}
-	<li>{{ squirrel_detail }}</li>
+	{% for sighting in sightings %}
+        <li>{{ sighting.unique_squirrel_id }}</li>
 	{% endfor %}
 	</ul>
 	</body>
