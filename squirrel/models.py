@@ -86,3 +86,5 @@ class SquirrelDetail(models.Model):
     indifferent = models.BooleanField()
     
     runs_from = models.BooleanField()
+
+
