@@ -1,4 +1,5 @@
 import csv
+from datetime import datetime
 
 from django.core.management.base import BaseCommand
 from squirrel.models import SquirrelDetail
@@ -19,39 +20,29 @@ class Command(BaseCommand):
 
             for item in reader:
                 obj = SquirrelDetail()
-                obj.X = item['X']
-                obj.Y = item['Y']
-                obj.Unique_Squirrel_ID = item['Unique Squirrel ID']
-                obj.Hectare = item['Hectare']
-
-                
-                obj.Date = item['Date']
-                obj.Hectare_Squirrel_Number = item['Hectare Squirrel Number']
-                obj.Age = item['Age']
-                obj.Primary_Fur_Color = item['Primary Fur Color']
-                obj.Highlight_Fur_Color = item['Highlight Fur Color']
-                obj.Combination_of_Primary_and_Highlight_Color = item['Combination of Primary and Highlight Color']
-                obj.Color_notes = item['Color notes']
-                obj.Location = item['Location']
-                obj.Above_Ground_Sighter_Measurement = item['Above Ground Sighter Measurement']
-                obj.Specific_Location = item['Specific Location']
-                
-                obj.Running = bool(item['Running'])
-                obj.Chasing = bool(item['Chasing'])
-                obj.Climbing = bool(item['Climbing'])
-                obj.Eating = bool(item['Eating'])
-                obj.Foraging = bool(item['Foraging'])
-                obj.Other_Activities = item['Other Activities']
-                obj.Kuks = bool(item['Kuks'])
-                obj.Quaas = bool(item['Quaas'])
-                obj.Moans = bool(item['Moans'])
-                obj.Tail_flags = bool(item['Tail flags'])
-                obj.Tail_twitches = bool(item['Tail twitches'])
-                obj.Approaches = bool(item['Approaches'])
-                obj.Indifferent = bool(item['Indifferent'])
-                obj.Runs_from = bool(item['Runs from'])
-                obj.Other_Interactions = item['Other Interactions']
-                obj.Lat_Long = item['Lat/Long']
+                obj.latitude = item['X']
+                obj.longitude = item['Y']
+                obj.snique_squirrel_id = item['Unique Squirrel ID']
+                obj.shift = item['Shift']
+                obj.date = datetime.strptime(item['Date'], '%m%d%Y').strftime('%Y-%m-%d')
+                obj.age = item['Age']
+                obj.primary_fur_color = item['Primary Fur Color']
+                obj.location = item['Location']
+                obj.specific_location = item['Specific Location']
+                obj.running = (item['Running'][0] == 't')
+                obj.chasing = (item['Chasing'][0] == 't')
+                obj.climbing = (item['Climbing'][0] == 't')
+                obj.eating = (item['Eating'][0] == 't')
+                obj.foraging = (item['Foraging'][0] == 't')
+                obj.other_activities = item['Other Activities']
+                obj.kuks = (item['Kuks'][0] == 't')
+                obj.quaas = (item['Quaas'][0] == 't')
+                obj.moans = (item['Moans'][0] == 't')
+                obj.tail_flags = (item['Tail flags'][0] == 't')
+                obj.tail_twitches = (item['Tail twitches'][0] == 't')
+                obj.approaches = (item['Approaches'][0] == 't')
+                obj.indifferent = (item['Indifferent'][0] == 't')
+                obj.runs_from = (item['Runs from'][0] == 't')
   
                 obj.save()
         

@@ -1,92 +1,36 @@
 from django.db import models
-from django.utils.translation import gettext as _
 
-
-class Squirrel(models.Model):
-    latitude = models.DecimalField(
-        max_digits=9,
-        decimal_places=6,
-        help_text=_('Latitude of the location of squirrel'),
-    )
-
-    longitude = models.DecimalField(
-        max_digits=9,
-        decimal_places=6,
-        help_text=_('Longitude of the location of squirrel'),
-    )
-
-    unique_squirrel_id = models.CharField(
-        max_length = 20,
-        help_text=_('Unique squirrel id of squirrel'),
-    )
-
-    AM = 'AM'
-    PM = 'PM'
-
-    SHIFT_CHOICES = [
-        (AM, _('AM')),
-        (PM, _('PM')),
-    ]
-
-    shift = models.CharField(
-        max_length=5,
-        choices=SHIFT_CHOICES,
-        help_text=_('AM or PM'),
-    )
-
-    date = models.DateField(
-        help_text=_('Date when squirrel observed'),
-    )
-
-    ADULT = 'Adult'
-    JUVENILE = 'Juvenile'
-    NONE = ''
-
-    AGE_CHOICES = [
-        (ADULT, _('Adult')),
-        (JUVENILE, _('Juvenile')),
-    ]   
-    
-    age = models.CharField(
-        max_length=10,
-        choices=AGE_CHOICES,
-        default=NONE,
-        help_text=_('Age of squirrel'),
-    )
-
-
-<<<<<<< HEAD
     
 class SquirrelDetail(models.Model):
     latitude = models.DecimalField(
-        max_digits = 15,
-        decimal_places = 13,
-        help_text=('Latitude of the location of squirrel'),
+        max_digits=15,
+        decimal_places=13,
+        help_text='Latitude of the sighting of squirrel',
     )
 
     longitude = models.DecimalField(
-        max_digits= 15,
-        decimal_places = 13,
-        help_text=('Longitude of the location of squirrel'),
+        max_digits=15,
+        decimal_places=13,
+        help_text='Longitude of the sighting of squirrel',
     )
 
     unique_squirrel_id = models.CharField(
         max_length = 20,
-        help_text=('Unique squirrel id of squirrel'),
+        help_text='Unique squirrel id of squirrel',
     )
 
     AM = 'AM'
     PM = 'PM'
 
     SHIFT_CHOICES = [
-        (AM, ('AM')),
-        (PM, ('PM')),
+        (AM, 'AM'),
+        (PM, 'PM'),
     ]
 
     shift = models.CharField(
         max_length=5,
         choices=SHIFT_CHOICES,
-        help_text=('AM or PM'),
+        help_text='AM or PM',
     )
 
     date = models.DateField(
@@ -109,40 +53,36 @@ class SquirrelDetail(models.Model):
         help_text=('Age of squirrel'),
     )
 
-    Primary_Fur_Color = models.CharField(max_length=50, blank = True)
+    primary_fur_color = models.CharField(max_length=50, blank=True)
 
-    Location = models.CharField(max_length=30, blank = True)
+    location = models.CharField(max_length=30, blank=True)
 
-    Specific_Location = models.CharField(max_length=30, blank = True)
+    specific_location = models.CharField(max_length=30, blank=True)
 
-    Running = models.BooleanField()
+    running = models.BooleanField()
     
-    Chasing = models.BooleanField()
+    chasing = models.BooleanField()
     
-    Climbing = models.BooleanField()
+    climbing = models.BooleanField()
     
-    Eating = models.BooleanField()
+    eating = models.BooleanField()
     
-    Foraging = models.BooleanField()
+    foraging = models.BooleanField()
     
-    Other_Activities = models.CharField(max_length=50, blank = True)
+    other_activities = models.CharField(max_length=50, blank=True)
     
-    Kuks = models.BooleanField()
+    kuks = models.BooleanField()
     
-    Quaas = models.BooleanField()
+    quaas = models.BooleanField()
     
-    Moans = models.BooleanField()
+    moans = models.BooleanField()
     
-    Tail_flags = models.BooleanField()
+    tail_flags = models.BooleanField()
     
-    Tail_twitches = models.BooleanField()
+    tail_twitches = models.BooleanField()
     
-    Approaches = models.BooleanField()
+    approaches = models.BooleanField()
     
-    Indifferent = models.BooleanField()
+    indifferent = models.BooleanField()
     
-    Runs_from = models.BooleanField()
-
-
-=======
->>>>>>> origin
+    runs_from = models.BooleanField()
