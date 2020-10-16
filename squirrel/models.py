@@ -8,13 +8,13 @@ class Meta:
 class SquirrelDetail(models.Model):
     X = models.DecimalField(
         max_digits=15,
-        decimal_places=13
+        decimal_places=13,
         help_text='Longitude of the sighting of squirrel',
         )
 
     Y = models.DecimalField(
         max_digits=15,
-        decimal_places=13
+        decimal_places=13,
         help_text='Latitude of the sighting of squirrel',
         )
 
