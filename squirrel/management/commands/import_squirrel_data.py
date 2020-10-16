@@ -1,5 +1,5 @@
 import csv
-from datetime import datetime
+import datetime
 
 from django.core.management.base import BaseCommand
 from squirrel.models import SquirrelDetail
@@ -20,10 +20,9 @@ class Command(BaseCommand):
 
             for item in reader:
                 obj = SquirrelDetail()
-                obj.latitude = item['X']
-                obj.longitude = item['Y'] 
-                if item['Unique Squirrel ID'] not in obj.unique_squirrel_id:
-                    obj.unique_squirrel_id = item['Unique Squirrel ID']
+                obj.X = item['X']
+                obj.Y = item['Y'] 
+                obj.unique_squirrel_id = item['Unique Squirrel ID']
                 obj.shift = item['Shift']
                 obj.date = datetime.strptime(item['Date'], '%m%d%Y').strftime('%Y-%m-%d')
                 obj.age = item['Age']

@@ -1,24 +1,25 @@
 from django.db import models
+from django.forms import ModelForm
+from django.urls import reverse
 
+class Meta:
+    managed = True
     
 class SquirrelDetail(models.Model):
-    latitude = models.DecimalField(
-        max_digits=15,
-        decimal_places=13,
-        help_text='Latitude of the sighting of squirrel',
-    )
-
-    longitude = models.DecimalField(
-        max_digits=15,
-        decimal_places=13,
+    X = models.FloatField(
         help_text='Longitude of the sighting of squirrel',
-    )
+        )
+
+    Y = models.FloatField(
+        help_text='Latitude of the sighting of squirrel',
+        )
 
     unique_squirrel_id = models.CharField(
-        max_length = 14,
-        primary_key=True,
-        help_text='Unique squirrel id of squirrel',
-    )
+        max_length = 50,
+        help_text='Unique Squirrel ID',
+        primary_key= True,
+        default = None,
+        )
 
     AM = 'AM'
     PM = 'PM'
@@ -50,44 +51,95 @@ class SquirrelDetail(models.Model):
     age = models.CharField(
         max_length=10,
         choices=AGE_CHOICES,
-        blank = True,
+        null = True,
         help_text=('Age of squirrel'),
     )
 
-    primary_fur_color = models.CharField(max_length=50, blank=True)
+    primary_fur_color = models.CharField(max_length=50, null=True)
 
-    location = models.CharField(max_length=30, blank=True)
+    location = models.CharField(max_length=30, null=True)
 
-    specific_location = models.CharField(max_length=30, blank=True)
+    specific_location = models.CharField(max_length=30, null=True)
 
-    running = models.BooleanField()
+    TRUE='TRUE'
+    FALSE='FALSE'
+    CHOICES=(
+            (TRUE,'TRUE'),
+            (FALSE,'FALSE'),
+            )
     
-    chasing = models.BooleanField()
+    running = models.CharField(
+            max_length=100,
+            choices=CHOICES,
+            help_text=('Running'))
     
-    climbing = models.BooleanField()
+    chasing = models.CharField(
+            max_length=100,
+            choices=CHOICES,
+            help_text=('Chasing'))
     
-    eating = models.BooleanField()
+    climbing = models.CharField(
+            max_length=100,
+            choices=CHOICES,
+            help_text=('Climbing'))
     
-    foraging = models.BooleanField()
+    eating = models.CharField(
+            max_length=100,
+            choices=CHOICES,
+            help_text=('Eating'))
+    foraging = models.CharField(
+            max_length=100,
+            choices=CHOICES,
+            help_text=('Foraging'))
     
-    other_activities = models.CharField(max_length=50, blank=True)
+    other_activities = models.CharField(
+            max_length=100,
+            help_text=('Other Activities'),
+            null = True)
     
-    kuks = models.BooleanField()
+    kuks = models.CharField(
+            max_length=100,
+            choices=CHOICES,
+            help_text=('Kuks'))
+
+    quaas = models.CharField(
+            max_length=100,
+            choices=CHOICES,
+            help_text=('Quaas'))
     
-    quaas = models.BooleanField()
+    moans = models.CharField(
+            max_length=100,
+            choices=CHOICES,
+            help_text=('Moans'))
     
-    moans = models.BooleanField()
+    tail_flags = models.CharField(
+            max_length=100,
+            choices=CHOICES,
+            help_text=('Tail flags'))
     
-    tail_flags = models.BooleanField()
+    tail_twitches = models.CharField(
+            max_length=100,
+            choices=CHOICES,
+            help_text=('Tail twitches'))
     
-    tail_twitches = models.BooleanField()
+    approaches = models.CharField(
+            max_length=100,
+            choices=CHOICES,
+            help_text=('Approaches'))
     
-    approaches = models.BooleanField()
+    indifferent = models.CharField(
+            max_length=100,
+            choices=CHOICES,
+            help_text=('Indifferent'))
     
-    indifferent = models.BooleanField()
-    
-    runs_from = models.BooleanField()
+    runs_from = models.CharField(
+            max_length=100,
+            choices=CHOICES,
+            help_text=('Runs_from'))
+
 
     def __str__(self):
         return self.unique_squirrel_id
+    def get_absolute_url(self):
+        return reverse('squirrels-detail', kwargs={'id':self.Unique_squirrel_id})
 
