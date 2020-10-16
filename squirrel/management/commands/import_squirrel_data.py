@@ -1,5 +1,5 @@
 import csv
-import datetime
+from datetime import datetime
 
 from django.core.management.base import BaseCommand
 from squirrel.models import SquirrelDetail
