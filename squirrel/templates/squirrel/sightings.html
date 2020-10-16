@@ -1,10 +1,16 @@
 <!doctype html>
 <html>  
 	<body>
-	<ul>
-	{% for sighting in sightings %}
-        <li>{{ sighting.unique_squirrel_id }}</li>
-	{% endfor %}
-	</ul>
+	    <div>
+	    <p><a href="/sightings/add/">Create a new sighting</a></p>
+	    </div>
+		
+	    <div>
+	    <ul>
+	    {% for sighting in sightings %}
+		    <li><a href='{{ sighting.unique_squirrel_id }}'>{{ sighting.unique_squirrel_id }}</a></li>
+	    {% endfor %}
+	    </ul>
+	    </div>
 	</body>
 </html>
