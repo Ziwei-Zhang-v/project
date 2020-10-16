@@ -6,11 +6,15 @@ class Meta:
     managed = True
     
 class SquirrelDetail(models.Model):
-    X = models.FloatField(
+    X = models.DecimalField(
+        max_digits=15,
+        decimal_places=13
         help_text='Longitude of the sighting of squirrel',
         )
 
-    Y = models.FloatField(
+    Y = models.DecimalField(
+        max_digits=15,
+        decimal_places=13
         help_text='Latitude of the sighting of squirrel',
         )
 
