@@ -1,0 +1,9 @@
+<!doctype html>
+<html>
+<h1>Update a particular sighting</h1>
+<form action='.' method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" value="Update" />
+</form>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<h1>General stats about the sightings</h1>
+
+{% block content %}
+<form  method='GET'>
+
+<style>
+table,table tr th, table tr td { border:1px solid black; }
+table { width: 900px; min-height: 30px; line-height: 30px; text-align: center; border-collapse: collapse;}
+</style>
+
+<table>
+	<tr>
+		<th>Number of Squirrels</th>
+		<th>Number of Adult Age Squirrels</th>
+		<th>Number of Squirrels with Cinnamon Fur</th>
+		<th>Number of Squirrels with Gray Fur</th>
+		<th>Number of Squirrels on the Ground</th>
+	</tr>
+	<tr>
+	<td>{{ num_of_sightings }}</td>
+	<td>{{ adult_age }}</td>
+	<td>{{ fur_cinnamon }}</td>
+        <td>{{ fur_gray }}</td>
+	<td>{{ ground_plane_location }}</td>
+	</tr>
+</table>
+</form>
+{% endblock %}
+</html>
