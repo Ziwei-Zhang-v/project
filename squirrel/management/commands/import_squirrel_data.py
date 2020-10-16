@@ -21,8 +21,9 @@ class Command(BaseCommand):
             for item in reader:
                 obj = SquirrelDetail()
                 obj.latitude = item['X']
-                obj.longitude = item['Y']
-                obj.unique_squirrel_id = item['Unique Squirrel ID']
+                obj.longitude = item['Y'] 
+                if item['Unique Squirrel ID'] not in obj.unique_squirrel_id:
+                    obj.unique_squirrel_id = item['Unique Squirrel ID']
                 obj.shift = item['Shift']
                 obj.date = datetime.strptime(item['Date'], '%m%d%Y').strftime('%Y-%m-%d')
                 obj.age = item['Age']
