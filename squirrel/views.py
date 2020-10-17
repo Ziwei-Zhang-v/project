@@ -45,16 +45,15 @@ def add(request):
 def update(request, unique_squirrel_id):
     Object = get_object_or_404(SquirrelDetail, pk=unique_squirrel_id)
     form = Form(request.POST or None, instance=Object)
-    context = {'form':form}
     if form.is_valid():
         Object = form.save(commit=False)
         Object.save()
         return redirect('/sightings/')
-    else:
+    else:     
         context={
             'form': form,
         }
-        return render(request, 'squirrel/update.html', context)
+        return render(request,'squirrel/update.html',context)
 
 def stats(request):
     num_of_sightings = SquirrelDetail.objects.all().count()

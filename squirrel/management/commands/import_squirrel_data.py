@@ -29,20 +29,20 @@ class Command(BaseCommand):
                 obj.primary_fur_color = item['Primary Fur Color']
                 obj.location = item['Location']
                 obj.specific_location = item['Specific Location']
-                obj.running = (item['Running'][0] == 't')
-                obj.chasing = (item['Chasing'][0] == 't')
-                obj.climbing = (item['Climbing'][0] == 't')
-                obj.eating = (item['Eating'][0] == 't')
-                obj.foraging = (item['Foraging'][0] == 't')
+                obj.running = (item['Running'][0].lower() == 't')
+                obj.chasing = (item['Chasing'][0].lower() == 't')
+                obj.climbing = (item['Climbing'][0].lower() == 't')
+                obj.eating = (item['Eating'][0].lower() == 't')
+                obj.foraging = (item['Foraging'][0].lower() == 't')
                 obj.other_activities = item['Other Activities']
-                obj.kuks = (item['Kuks'][0] == 't')
-                obj.quaas = (item['Quaas'][0] == 't')
-                obj.moans = (item['Moans'][0] == 't')
-                obj.tail_flags = (item['Tail flags'][0] == 't')
-                obj.tail_twitches = (item['Tail twitches'][0] == 't')
-                obj.approaches = (item['Approaches'][0] == 't')
-                obj.indifferent = (item['Indifferent'][0] == 't')
-                obj.runs_from = (item['Runs from'][0] == 't')
+                obj.kuks = (item['Kuks'][0].lower() == 't')
+                obj.quaas = (item['Quaas'][0].lower() == 't')
+                obj.moans = (item['Moans'][0].lower() == 't')
+                obj.tail_flags = (item['Tail flags'][0].lower() == 't')
+                obj.tail_twitches = (item['Tail twitches'][0].lower() == 't')
+                obj.approaches = (item['Approaches'][0].lower() == 't')
+                obj.indifferent = (item['Indifferent'][0].lower() == 't')
+                obj.runs_from = (item['Runs from'][0].lower() == 't')
   
                 obj.save()
         
