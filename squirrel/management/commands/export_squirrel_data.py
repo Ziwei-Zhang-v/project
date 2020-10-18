@@ -17,6 +17,5 @@ class Command(BaseCommand):
             for obj in SquirrelDetail.objects.all():
                 row = [getattr(obj,field.name) for field in fields]
                 writer.writerow(row)
-            f.close()
-~                      
+            f.close()          
 
