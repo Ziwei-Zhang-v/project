@@ -7,7 +7,7 @@ class Command(BaseCommand):
     help = 'Export the squirrel data as csv'
 
     def add_arguments(self, parser):
-        parser.add_argument('squirrel_file', help = 'file containing squirrel details')
+        parser.add_argument('args', type=str, nargs='*')
 
     def handle(self,*args,**kwargs):
         path = args[0]
